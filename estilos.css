@@ -1,0 +1,271 @@
+/* ============================================================
+   GESTIÓN DE PERFILES · Estilo navideño dorado
+   Este archivo debe estar en la MISMA carpeta que index.php
+   ============================================================ */
+
+:root{
+  --fondo-1:   #0B1A14;
+  --fondo-2:   #1A0F12;
+  --panel:     rgba(18, 36, 28, 0.86);
+  --borde:     rgba(232, 196, 106, 0.45);
+  --texto:     #F8F1DD;
+  --texto-dim: #C9BFA3;
+
+  --oro-claro: #FBE9A6;
+  --oro:       #E8C46A;
+  --oro-medio: #D4A72C;
+  --oro-oscuro:#8C6A12;
+
+  --rojo:      #C8372D;
+  --rojo-claro:#E4584D;
+  --verde:     #6BCB8B;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{ margin:0; padding:0; }
+
+body{
+  min-height:100vh;
+  font-family: 'Poppins', system-ui, sans-serif;
+  color: var(--texto);
+  background-color: var(--fondo-1);
+  background-image: linear-gradient(160deg, var(--fondo-1) 0%, #12241B 55%, var(--fondo-2) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* ---------- Fondo decorativo (estrellas y nieve) ---------- */
+.stars-container,
+.snow-container{
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star{
+  position:absolute;
+  border-radius:50%;
+  background: var(--oro-claro);
+  box-shadow: 0 0 6px 2px rgba(251, 233, 166, 0.7);
+  animation: brillo 3s ease-in-out infinite;
+}
+
+@keyframes brillo{
+  0%, 100%{ opacity: .25; transform: scale(.8); }
+  50%     { opacity: 1;   transform: scale(1.2); }
+}
+
+.snowflake{
+  position:absolute;
+  top:-30px;
+  color:#fff;
+  opacity:.8;
+  user-select:none;
+  animation-name: caer;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes caer{
+  from{ transform: translateY(-30px) translateX(0); }
+  to  { transform: translateY(105vh) translateX(40px); }
+}
+
+/* ---------- Contenido ---------- */
+.main-container{
+  position: relative;
+  z-index: 1;
+  width: min(900px, 92%);
+  margin: 0 auto;
+  padding: 40px 0 70px;
+}
+
+.header{
+  text-align:center;
+  margin-bottom: 30px;
+}
+
+.garland{
+  font-size: 26px;
+  letter-spacing: 8px;
+  margin-bottom: 10px;
+}
+
+.glow-title{
+  margin: 0;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(30px, 6vw, 52px);
+  background: linear-gradient(180deg, var(--oro-claro) 0%, var(--oro) 50%, var(--oro-medio) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--oro);               /* respaldo si el navegador no soporta el degradado */
+  filter: drop-shadow(0 0 14px rgba(232, 196, 106, 0.55));
+}
+
+.subtitle{
+  margin: 8px 0 0;
+  color: var(--texto-dim);
+  font-size: 14px;
+}
+
+/* ---------- Avisos ---------- */
+.alert-box{
+  margin: 0 0 22px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--borde);
+  background: rgba(107, 203, 139, 0.12);
+  color: var(--verde);
+  font-weight: 600;
+  text-align:center;
+}
+
+.alert-error{
+  background: rgba(228, 88, 77, 0.14);
+  border-color: rgba(228, 88, 77, 0.55);
+  color: #FF9B91;
+}
+
+/* ---------- Tarjetas ---------- */
+.card-form,
+.card-table{
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 0 28px rgba(232, 196, 106, 0.12), 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.card-form h2,
+.card-table h2{
+  margin: 0 0 20px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 22px;
+  text-align:center;
+  color: var(--oro);
+}
+
+/* ---------- Formulario ---------- */
+.input-group{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.input-group label{
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--oro-claro);
+}
+
+.input-group input,
+.input-group select{
+  width:100%;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--texto);
+  background: rgba(8, 18, 13, 0.85);
+  border: 1px solid rgba(232, 196, 106, 0.35);
+  border-radius: 8px;
+}
+
+.input-group input::placeholder{ color: #7F8C80; }
+
+.input-group input:focus,
+.input-group select:focus{
+  outline: 2px solid var(--oro);
+  outline-offset: 1px;
+  box-shadow: 0 0 12px rgba(232, 196, 106, 0.35);
+}
+
+.input-group select option{
+  background: #0F1F18;
+  color: var(--texto);
+}
+
+.btn-gold{
+  width:100%;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #2A1D03;
+  background: linear-gradient(180deg, var(--oro-claro) 0%, var(--oro) 45%, var(--oro-medio) 100%);
+  border: 1px solid var(--oro-oscuro);
+  border-radius: 10px;
+  box-shadow: 0 0 18px rgba(232, 196, 106, 0.4);
+  transition: box-shadow .2s ease, transform .1s ease;
+}
+
+.btn-gold:hover{ box-shadow: 0 0 28px rgba(251, 233, 166, 0.7); }
+.btn-gold:active{ transform: translateY(1px); }
+
+/* ---------- Tabla ---------- */
+.table-responsive{ overflow-x:auto; }
+
+table{
+  width:100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead th{
+  text-align:left;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--oro);
+  border-bottom: 1px solid var(--borde);
+  white-space: nowrap;
+}
+
+tbody td{
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(232, 196, 106, 0.15);
+  color: var(--texto);
+}
+
+tbody tr:last-child td{ border-bottom:none; }
+tbody tr:hover{ background: rgba(232, 196, 106, 0.07); }
+
+td.vacio{
+  text-align:center;
+  padding: 28px 14px;
+  color: var(--texto-dim);
+}
+
+.badge-gold{
+  display:inline-block;
+  padding: 3px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--oro-claro);
+  background: rgba(232, 196, 106, 0.14);
+  border: 1px solid var(--borde);
+}
+
+.status-active{
+  color: var(--verde);
+  font-weight: 600;
+}
+
+/* ---------- Accesibilidad / móvil ---------- */
+@media (prefers-reduced-motion: reduce){
+  .star{ animation: none; opacity: .8; }
+  .snowflake{ display:none; }
+}
+
+@media (max-width: 560px){
+  .card-form, .card-table{ padding: 20px 16px; }
+  .garland{ font-size: 20px; letter-spacing: 4px; }
+}
